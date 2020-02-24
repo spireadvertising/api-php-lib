@@ -14,10 +14,14 @@ class SecretKey extends \PleskX\Api\Operator
      *
      * @return string
      */
-    public function create($ipAddress)
+    public function create($ipAddress = null)
     {
         $packet = $this->_client->getPacket();
-        $packet->addChild($this->_wrapperTag)->addChild('create')->addChild('ip_address', $ipAddress);
+        $packet->addChild($this->_wrapperTag)->addChild('create');
+
+        if(!is_null($ipAddress)){
+            $packet->addChild('ip_address', $ipAddress);
+        }
         $response = $this->_client->request($packet);
 
         return (string) $response->key;

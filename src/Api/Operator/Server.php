@@ -118,6 +118,11 @@ class Server extends \PleskX\Api\Operator
         return new Struct\Statistics($this->_getInfo('stat'));
     }
 
+    public function getAdminDomainList()
+    {
+        return new Struct\AdminDomainList($this->_getInfo('admin-domain-list'));
+    }
+
     /**
      * @return array
      */
